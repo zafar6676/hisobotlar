@@ -1,0 +1,7 @@
+# Generated extraction artifacts (large JSON files)
+extracted_data.json
+field_analysis.json
+soliq_extracted.json
+
+# Build/analysis scripts (intermediate)
+build_taxonomy.py
