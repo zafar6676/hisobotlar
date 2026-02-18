@@ -318,6 +318,7 @@
 | B20 | 81 (Yer osti suv) | 3-jadval | Tahlil sanasi | date | Ha | — |
 | B21 | 81 (Yer osti suv) | 3-jadval | Laboratoriya nomi | text_input | Ha | — |
 | B22 | 81 (Yer osti suv) | 3-jadval | Kimyoviy tahlil: Ca, Mg, Na, K, SO4, Cl, NO3, HCO3 | number_input | Ha | mg/l, har biri alohida ustun |
+
 | B23 | 81 (Yer osti suv) | 3-jadval | pH | number_input | Ha | — |
 | B24 | 81 (Yer osti suv) | 3-jadval | Mineralizatsiya, mg/l | number_input | Ha | — |
 | B25 | 79 (Tuproq degradatsiya) | Jadval | Yer maydoni, gektar | number_input | Ha | — |
@@ -328,6 +329,56 @@
 | B30 | 80 (Klasterlar) | ISH O'RNI | Yaratilgan ish o'rinlari soni | number_input | Ha | — |
 | B31 | 57-66 (ILMA) | Har bir shakl | Parametrlar | text_input/number_input | Ha | uz va ru tillarda varaqlar |
 | B32 | 57-66 (ILMA) | Parametrlar | Kompaniya nomi | select | Yo'q | Ro'yxatdan tanlash |
+
+
+### 1.3 Kod (Field Key) bo'yicha taksonomiya — reuse xaritasi
+
+> Quyidagi jadvalda **1-ustun doim kod (field key)**. Har bir kod uchun **reportdagi original maydon nomi (cell nomi)** ham berildi — shu orqali `ID -> qaysi real maydon` bog'lanishi aniq ko'rinadi.
+
+| Kod (field key) | Bizdagi ID | Asosiy hisobot(lar) | Reportdagi original maydon nomi (cell label) | Boshqa hisobotlarda ishlatilishi |
+|---|---|---|---|---|
+| M1 | M1 | ~80 ta shakl | "Tashkilot (korxona) nomi / Солиқ тўловчининг тўлиқ номи / Наименование" | Ha |
+| M2 | M2 | ~40+ shakl | "STIR / ИНН" | Ha |
+| M3 | M3 | ~30+ shakl | "IFUT kodi" | Ha |
+| M4 | M4 | ~25 shakl | "OKPO / DBIBT kodi" | Ha |
+| M5 | M5 | ~15 shakl | "OKONX kodi" | Ha |
+| M6 | M6 | ~30+ shakl | "Viloyat / Hudud kodi" | Ha |
+| M7 | M7 | ~25 shakl | "Tuman (shahar) kodi / nomi" | Ha |
+| M8 | M8 | ~70+ shakl | "Hisobot davri: yil" | Ha |
+| M9 | M9 | ~30 shakl | "Hisobot davri: chorak" | Ha |
+| M10 | M10 | ~15 shakl | "Hisobot davri: oy" | Ha |
+| M11 | M11 | ~20 shakl | "Hisobot davri: sana (dan/gacha)" | Ha |
+| M12 | M12 | ~15 shakl | "Hujjat turi (hisob-kitob / aniqlashtiruvchi)" | Ha |
+| M13 | M13 | ~20 shakl | "Soliq davri (oy/chorak/yil)" | Ha |
+| M14 | M14 | 3-shakl | "QQS to'lovchisining ro'yxatdan o'tish kodi" | Yo'q (faqat 3-shakl) |
+| M15 | M15 | ~30+ shakl | "Pochta manzili / Joylashgan manzil" | Ha |
+| M16 | M16 | ~25 shakl | "Elektron pochta manzili" | Ha |
+| M17 | M17 | ~20 shakl | "Telefon raqami" | Ha |
+| M18 | M18 | ~15 shakl | "Mulkchilik shakli" | Ha |
+| M19 | M19 | ~15 shakl | "Tashkiliy-huquqiy shakl" | Ha |
+| M20 | M20 | ~50+ shakl | "Rahbar (F.I.O.)" | Ha |
+| M21 | M21 | ~40+ shakl | "Bosh hisobchi (F.I.O.)" | Ha |
+| M22 | M22 | ~20 shakl | "Hisobotni tayyorlagan shaxs F.I.O." | Ha |
+| M23 | M23 | ~50+ shakl | "Imzo sanasi" | Ha |
+| M24 | M24 | ~20 shakl | "M.O'. (Muhr o'rni)" | Ha |
+| M25 | M25 | ~30 shakl | "Taqdim etish muddati (deadline)" | Ha |
+| 010 | S9 / S18 / S44 | 3-shakl, 5-shakl, 16-shakl | 3-shakl: "Ozod qilinadigan aylanmalar"; 5-shakl: "Jami daromadlar"; 16-shakl: "Nomoddiy aktivlar" | Ha (3 ta hisobot) |
+| 010-3 | S1 / S20 | 3-shakl, 5-shakl | 3-shakl: "Realizatsiya qilish bo'yicha aylanmalar — Qiymati"; 5-shakl: "Jami xarajatlar summasi" | Ha (2 ta hisobot) |
+| 010-4 | S2 / S22 | 3-shakl, 5-shakl | 3-shakl: "QQS summasi"; 5-shakl: "Chiqarilmaydigan xarajatlar" | Ha (2 ta hisobot) |
+| 020 | S19 / S45 | 5-shakl, 16-shakl | 5-shakl: "Tovar realizatsiyasidan daromad"; 16-shakl: "Asosiy vositalar" | Ha (2 ta hisobot) |
+| 101 | ST5 / ST22 | 48-shakl, 36-shakl | 48-shakl: "Korxonaning aylanmasi (QQS va aksizsiz)"; 36-shakl: "Biriktirilgan umumiy yer maydoni" | Ha (2 ta hisobot) |
+| 0101 | S23 | 5-shakl | "Xom ashyo va materiallar" | Yo'q |
+| 0101-3 | S3 | 3-shakl | "EHF orqali realizatsiya — Qiymati" | Yo'q |
+| 0102 | S24 | 5-shakl | "Yoqilg'i xarajatlari" | Yo'q |
+| 0102-3 | S4 | 3-shakl | "ONKM orqali realizatsiya" | Yo'q |
+| 0103-3 | S5 | 3-shakl | "Market place orqali" | Yo'q |
+| 0105-3 | S6 | 3-shakl | "Boshqa daromadlar — Qiymati" | Yo'q |
+| 0105-4 | S7 | 3-shakl | "Boshqa daromadlar — QQS summasi" | Yo'q |
+| 0106-3 | S8 | 3-shakl | "Aktsiz summasi" | Yo'q |
+| 110 | ST7 | 48-shakl | "Xarajatlar — jami (111+127)" | Yo'q |
+| 111 | ST8 | 48-shakl | "Tannarx va davr xarajatlari — jami" | Yo'q |
+| 113 | ST9 | 48-shakl | "Moddiy xarajatlar" | Yo'q |
+| 120 | ST10 | 48-shakl | "Mehnatga haq to'lash xarajatlari" | Yo'q |
 
 ---
 
